@@ -1,0 +1,58 @@
+.App {
+    text-align: center;
+  }
+.AppLogo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 25vmin;
+    pointer-events: none;
+}
+/* .App header {
+    background-color: #282c34;
+    min-height: 25vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+} */
+.Button {
+    background-color: green;
+    color: white;
+    font: inherit;
+    border: 1px solid blue;
+    border-radius: 10px;
+    padding: 8px;
+    cursor: pointer;
+}
+.Button:hover{
+    background-color: lightgreen;
+    color: black;
+}
+.ButtonRed{
+    background-color:red;
+    color: white;
+    font: inherit;
+    border: 1px solid blue;
+    border-radius: 10px;
+    padding: 8px;
+    cursor: pointer;
+}
+.ButtonRed:hover{
+    background-color: salmon;
+    color:black;
+}
+.Input{
+    display:inline;
+}
+
+
+
+@keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}

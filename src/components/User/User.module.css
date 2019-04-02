@@ -6,8 +6,8 @@
     padding: 16px;
     text-align: center;
 }
-/* @media (min-width: 500px){
+@media (min-width: 500px){
     .User{
         width: 450px;
     }
-} */
+}

@@ -4,7 +4,12 @@ import logo from '../assets/logo.svg';
 import UserList from '../components/User/UserList'
 import Validation from '../hw2/Validation'
 import CharacterBoxList from '../hw2/CharacterBoxList'
-import './App.css';
+import Cockpit from '../Cockpit/Cockpit'
+//import './App.css';
+import classes from './App.module.css'
+import AuthContext from '../context/auth-context'
+import Layout from '../components/Layout/Layout'
+import BurgerBuilder from './BurgerBuilder/BurgerBuilder'
 
 class App extends Component {
   state = {
@@ -14,7 +19,8 @@ class App extends Component {
       {id:"asdf", username: "Mimi"}
     ],
     showUserDiv: false,
-    input: ""
+    input: "",
+    isAuthenticated: false
   }
   nameChangeHandler = (id, event) => {
     const userIndex = this.state.users.findIndex((p) => {
@@ -57,19 +63,15 @@ class App extends Component {
       input: charArray.join('')
     });
   }
+  loginHandler = () => {
+    let temp = this.state.authenticated;
+    this.setState({
+      authenticated: !temp
+    });
+  }
   render() {
     let userDiv = null;
-    const buttonStyle = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      borderRadius: '10px',
-      padding: '8px',
-      cursor: 'pointer'
-    }
     if(this.state.showUserDiv){
-      buttonStyle.backgroundColor = 'red';
       userDiv = (
           <UserList
             users={this.state.users}
@@ -79,13 +81,29 @@ class App extends Component {
       )
     }
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header>
-        <button style={buttonStyle} onClick={this.toggleHandler}>Toggle</button>
+      <div className={classes.App}>
+        {/* <header className={classes.App.header}>
+          <img src={logo} className={classes.AppLogo} alt="logo" />
+        </header> */}
+        <Layout>
+          <BurgerBuilder></BurgerBuilder>
+        </Layout>
+        <AuthContext.Provider
+          value={
+            {
+              authenticated: this.state.authenticated,
+              login: this.loginHandler
+            }
+          }
+        >
+        <Cockpit
+          showUserDiv={this.state.showUserDiv}
+          click={this.toggleHandler}
+        />
         {userDiv}
+        </AuthContext.Provider>
         <input
+          className={classes.Input}
           type="text"
           onChange={this.inputChangeHandler}
           value={this.state.input}

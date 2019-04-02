@@ -5,7 +5,7 @@ const userList = (props) => props.users.map((user, index) => {
           <User
             click={()=>props.deleteUser(index)}
             username={user.username}
-            change={(event) => {props.changeUsername (user.id, event)}}
+            change={(event) => {props.changeUsername(user.id, event)}}
             key={user.id}
           />
         )
