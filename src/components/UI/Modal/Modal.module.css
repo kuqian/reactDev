@@ -15,6 +15,7 @@
     border-radius: 20px;
 }
 .ModalHide {
+    /* display: none; */
     position: fixed;
     z-index: 500;
     background-color: white;
